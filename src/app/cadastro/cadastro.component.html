@@ -1,0 +1,169 @@
+<div class="container-fluid mb-4">
+  <div class="row ">
+    <div class="col d-flex align-items-center justify-content-center">
+      <h1>Olá Seja bem-vindo(a).</h1>
+    </div>
+    <div class="col">
+      <img src="https://i.imgur.com/TwDKXAS.png" class="img mt-3 mb-3" width="200px" alt="...">
+      <img src="https://i.imgur.com/qnkwlzf.png" class="img mt-3 mb-3" width="204px" alt="...">
+    </div>
+  </div>
+</div>
+<div class="banner pt-5 pb-5">
+  <div class="container-fluid ">
+    <div class="col d-flex align-items-center justify-content-center">
+      <h3>Escolha o operação que deseja realizar</h3>
+      </div>
+    <!-- Button  modal -->
+    <div class="col d-flex align-items-center justify-content-center mt-4 mb-5">
+      <button type="button" class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#criar">
+        Cadastrar Cliente
+      </button>
+      <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#criarBoleto">
+        Criar Boleto
+      </button>
+    </div>
+
+
+    <!-- Modal cliente -->
+    <div class="modal fade" id="criar" tabindex="-1" aria-labelledby="criar" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cadastrar Cliente</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="forma-group">
+              <label for="nome">Nome do cliente</label>
+              <input [(ngModel)]='cliente.nome' type="text" class="form-control" id="nome"
+                placeholder="Digite o nome do cliente">
+            </div>
+            
+            <div class="forma-group">
+              <label for="preco">CPF</label>
+              <input [(ngModel)]='cliente.cpf' type="text" class="form-control" id="cpf"
+                placeholder="Digite o CPF do cliente">
+            </div>
+            <div class="forma-group">
+              <label for="preco">RG</label>
+              <input [(ngModel)]='cliente.rg' type="text" class="form-control" id="rg" placeholder="Digite o RG">
+            </div>
+            <div class="forma-group">
+              <label for="marca">Data nascimento</label>
+              <input [(ngModel)]='cliente.dtNascimento' type="text" class="form-control" id="dtNasc"
+                placeholder="Digite a data de nascimento">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)='cadastrarCliente()'>Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <!-- Modal boleto -->
+    <div class="modal fade" id="criarBoleto" tabindex="-1" aria-labelledby="criar" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Criação de boleto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="forma-group">
+              <label for="nome">Data de vencimento</label>
+              <input [(ngModel)]='boleto.dtVencimento' type="text" class="form-control" id="dtVenc"
+                placeholder="Digite o vencimento do boleto">
+            </div>
+            <div class="forma-group">
+              <label for="preco">CNPJ</label>
+              <input [(ngModel)]='boleto.cnpj' type="text" class="form-control" id="cnpj" placeholder="Digite o CNPJ">
+            </div>
+            <div class="forma-group">
+              <label for="preco">Valor do boleto</label>
+              <input [(ngModel)]='boleto.valor' type="text" class="form-control" id="preco"
+                placeholder="Digite o valor">
+            </div>
+            <div class="forma-group">
+              <label for="marca">Código de barras</label>
+              <input [(ngModel)]='boleto.cdBarras' type="text" class="form-control" id="marca"
+                placeholder="Código de barras">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)='cadastrarBoleto()'>Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+    <h3 class="mt-5 mb-5">Clientes cadastrados</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">RG</th>
+            <th scope="col">Data nascimento</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Deletar</th>
+            <!-- <th scope="col">Categoria</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let cliente of listaClientes'>
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.rg}}</td>
+            <td>{{cliente.dtNascimento}}</td>
+            <td><button class="btn btn-danger me-2 text-white" [routerLink]="['/edit-cliente', cliente.id]" >Editar</button></td>
+            <td><button class="btn btn-success text-white"  [routerLink]="['/delete-cliente', cliente.id]">Apagar</button></td>
+            <!-- <td>{{produto.categoria.descricao}}</td> -->
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h3 class="mt-5 mb-5">Boletos Gerados</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Valor</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Código de barras</th>
+            <th scope="col">Data vencimento</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Deletar</th>
+            <!-- <th scope="col">Categoria</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let boleto of listaBoletos'>
+            <th scope="row">{{boleto.idBoleto}}</th>
+            <td>{{boleto.valor}}</td>
+            <td>{{boleto.cnpj}}</td>
+            <td>{{boleto.cdBarras}}</td>
+            <td>{{boleto.dtVencimento}}</td>
+            <td><button class="btn btn-danger me-2 text-white" [routerLink]="['/edit-boleto', boleto.idBoleto]">Editar</button></td>
+            <td><button class="btn btn-success text-white" [routerLink]="['/delete-boleto', boleto.idBoleto]">Apagar</button></td>
+            <!-- <td>{{produto.categoria.descricao}}</td> -->
+          </tr>
+        </tbody>
+    </table>
+</div>

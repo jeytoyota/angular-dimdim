@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <h3 class="mt-2">Exclusão de boleto</h3>
+      <div class="card-header">Deseja apagar o boleto?</div>
+      <div class="card-body">
+        <h5 class="card-title">Id: {{boleto.idBoleto}}</h5>
+        <h5 class="card-title">CNPJ: {{boleto.cnpj}}</h5>
+        <h5 class="card-title">Valor: {{boleto.valor}}</h5>
+        <h5 class="card-title">Codigo de barras: {{boleto.cdBarras}}</h5>
+        
+
+      </div>
+      <button type="button" class="btn btn-danger" (click)='apagar()'>Apagar</button>
+      <button type="button" class="btn btn-warning mt-3 mb-3" [routerLink]="['/cadastro']">Cancelar</button>
+    </div>
+  </div>
+</div>

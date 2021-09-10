@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+          <h3 class="mt-2">Exclusão de Cliente</h3>
+        <div class="card-header">Deseja apagar o cadastro do cliente?</div>
+        <div class="card-body">
+          <h5 class="card-title">Id: {{cliente.id}}</h5>
+          <h5 class="card-title">Nome: {{cliente.nome}}</h5>
+          <h5 class="card-title">CPF: {{cliente.cpf}}</h5>
+          <h5 class="card-title">RG: {{cliente.rg}}</h5>
+          <h5 class="card-title">Data nascimento: {{cliente.dtNascimento}}</h5>
+          
+  
+        </div>
+        <button type="button" class="btn btn-danger" (click)='apagar()'>Apagar</button>
+        <button type="button" class="btn btn-warning mt-3 mb-3" [routerLink]="['/cadastro']">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
