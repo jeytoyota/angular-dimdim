@@ -18,7 +18,7 @@ export class ClienteService {
   }
 
   getCliente(id: number): Observable<Cliente>{
-    return this.http.get<Cliente>(`${environment.uri}/cliente${id}`)
+    return this.http.get<Cliente>(`${environment.uri}/cliente/${id}`)
   }
 
   putCliente(cliente: Cliente): Observable<Cliente>{
@@ -30,6 +30,6 @@ export class ClienteService {
   }
 
   deleteCliente(id:number): Observable<Cliente>{
-    return this.http.delete<Cliente>(`${environment.uri}/cliente${id}`)
+    return this.http.delete<Cliente>(`${environment.uri}/cliente/${id}`)
   }
 }

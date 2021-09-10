@@ -18,7 +18,7 @@ export class BoletoService {
   }
 
   getBoleto(id: number): Observable<Boleto>{
-    return this.http.get<Boleto>(`${environment.uri}/boleto${id}`)
+    return this.http.get<Boleto>(`${environment.uri}/boleto/${id}`)
   }
 
   putBoleto(boleto: Boleto): Observable<Boleto>{
@@ -30,6 +30,6 @@ export class BoletoService {
   }
 
   deleteBoleto(id:number): Observable<Boleto>{
-    return this.http.delete<Boleto>(`${environment.uri}/boleto${id}`)
+    return this.http.delete<Boleto>(`${environment.uri}/boleto/${id}`)
   }
 }
